@@ -1,0 +1,103 @@
+body {
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 1rem;
+    color: #444;
+    margin: 2rem auto;
+    max-width: 920px;
+}
+/* tabs style here  */
+.tab {
+    float: left;
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px 5px 0 0;
+    background: #F9F9F9;
+    color: #777;
+}
+
+.tab.active,
+.tab:hover {
+    background: #DDD;
+    color: #222;
+}
+
+.content {
+    display: none;
+    clear: both;
+    background: #FFF;
+    padding: 1rem 0;
+}
+
+.content.active {
+    display: block;
+}
+/* tabs style end here */
+/* cart table start here */
+.table_cart {
+    width: 100%;
+    max-width: 700px;
+    border: 1px solid #999;
+    padding: 0;
+    border-collapse: collapse;
+}
+
+.table_cart thead tr,
+.table_cart tbody tr,
+.table_cart tfoot tr {
+    border-bottom: 1px solid #888;
+}
+
+.table_cart tfoot {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.table_cart--heading {
+    background: rgba(0, 0, 0, 0.4);
+    text-align: left;
+}
+
+.table_cart--footer {
+    text-align: left;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.table_cart td,
+.table_cart th {
+    padding: 8px;
+    border-left: 1px solid #888;
+    position: relative;
+}
+
+.table_cart td:first-child,
+.table_cart th:first-child {
+    border: 0;
+}
+
+.table_cart .add_qty,
+.table_cart .remove_qty {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 3px;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    line-height: 8px;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    cursor: pointer;
+    color: #fff;
+}
+
+.table_cart .remove_qty {
+    top: 23px;
+}
+
+.table_cart .input_qty {
+    padding: 5px;
+    margin-right: 5px;
+}
+/* cart table end here */
+.hide-msg {
+    display: none;
+}

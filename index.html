@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sale and expense page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+
+</head>
+
+<body>
+
+
+    <div class="tabs">
+        
+        <a href="#" data-tab="sale" class="tab active">Sales</a>
+        <a href="#" data-tab="expense" class="tab">Expense</a>
+        <a href="#" data-tab="reports" class="tab">Reports</a>
+
+
+        <div data-content="sale" class="content active">
+            <form class="p-2 js-saleForm" id="sale">
+                <div class="form-row form-group">
+                    <div class="col">
+                        <label for="item_name">Item Name</label>
+                        <select name="item_name" class="form-control js-item-name" required>
+                            <option value="">Select Item</option>
+                            <option value="iPhone X">iPhone X</option>
+                            <option value="iPhone XS">iPhone XS</option>
+                            <option value="iPhone 8">iPhone 8</option>
+                            <option value="Google Pixel 3">Google Pixel 3</option>
+                            <option value="Nokia 7">Nokia 7</option>
+                            <option value="Samsung J2">Samsung J2</option>
+                            <option value="One Plus 6">One Plus 6</option>
+                            <option value="Moto G6">Moto G6</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="item_price">Enter Price</label>
+                        <input type="number" name="item_price" value="" placeholder="Enter Item Price" class="form-control js-item_price"
+                            required>
+                    </div>
+                    <div class="col">
+                        <label for="item_qty">Select Qty</label>
+                        <select name="item_qty" class="form-control js-item_qty" required>
+                            <option value="">Select Qty</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="total amount">Total Amount</label>
+                        <input type="text" value="" class="form-control js-item_total" name="total_amount_sale"
+                            disabled>
+                    </div>
+                    <input type="text" hidden class="js-currentDate" value="" name="date">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Add Sale Record</button>
+                </div>
+                <div class="js-sucess hide-msg p-2 text-success"> New Record added Sucessfully</div>
+            </form>
+            <div class="item_list"></div>
+            <div class="item-total"></div>
+
+        </div>
+        <div data-content="expense" class="content">
+            <form class="p-2 js-expenseForm" id="expense">
+                <div class="form-row form-group">
+                    <div class="col">
+                        <select id="expense" name="expense_type" class="form-control js-expense_name" required>
+                            <option value="">Expense type</option>
+                            <option value="Shop Rent">Shop Rent</option>
+                            <option value="Eletricity Bill">Eletricity Bill</option>
+                            <option value="Worker Salary">Workers Salary</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <input type="number" name="expense_amount" value="" placeholder="Enter amount" class="form-control js-expense_amount"
+                            required>
+                    </div>
+                </div>
+                <!-- <input type="text" hidden class="js-expense_total" value="" name="total_amount_expense"> -->
+                <input type="text" hidden class="js-currentDate" value="" name="date">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Add Expense</button>
+                </div>
+                <div class="js-sucess hide-msg p-2 text-success"> Expense record added Sucessfully</div>
+
+            </form>
+        </div>
+        <div data-content="reports" class="content">
+            <div class="row">
+                <div class="col-6">
+                    <h5>Sales Report </h5>
+                    <form class="p-2 income_wrapper">
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <input type="date" name="date" pattern="\d{1,2}/\d{1,2}/\d{4}" class="form-control js-dateFilter" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success js-show_sales_reports">Show Sales Reports</button>
+                        <div class="sales_reports__content"> </div>
+<div class="js-error hide-msg p-2 text-danger"> No Recoreds available</div>
+<div class="js-error-date hide-msg p-2 text-danger"> Select the date</div>
+                    </form>
+                </div>
+                <div class="col-6">
+                    <h5>Expense Report </h5>
+                    <form class="p-2 expense_wrapper">
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <input type="date" name="date" pattern="\d{1,2}/\d{1,2}/\d{4}" class="form-control js-dateFilter" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success js-show_expense_reports">Show Expense Reports</button>
+                        <div class="expense_reports__content"></div>
+<div class="js-error hide-msg p-2 text-danger"> No Recoreds available</div>
+<div class="js-error-date hide-msg p-2 text-danger"> Select the date</div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+<script src="js/script.js"></script>
+
+</html>
