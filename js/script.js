@@ -45,26 +45,26 @@ $(function () {
     // sales report 
     $(".js-show_sales_reports").on('click', function () {
         event.preventDefault();
-        var selectedDate = $('.js-dateFilter').val();
+        var selectedDate = $('.js-dateFilter_sale').val();
         console.log(selectedDate);
         //return selectedDate;
         if (selectedDate !== "") {
             showSalesReportByDate(selectedDate);
         }
         else {
-            $('.income_wrapper > .js-error-date').toggle();
-            setTimeout(() => $('.income_wrapper > .js-error-date').hide(), 3000);
+            $('.sales_wrapper > .js-error-date').toggle();
+            setTimeout(() => $('.sales_wrapper > .js-error-date').hide(), 3000);
         }
         
     });
     // expense report 
     $(".js-show_expense_reports").on('click', function () {
         event.preventDefault();
-        var selectedDate = $('.js-dateFilter').val();
+        var selectedDate = $('.js-dateFilter_expense').val();
         console.log(selectedDate);
         //return selectedDate;
-        debugger;
-        if (selectedDate!==""){
+        
+        if (selectedDate !== ""){
             showExpenseReportByDate(selectedDate);
         }
         else {
@@ -170,7 +170,8 @@ function showSalesReportByDate(selectedDate){
     });
     
     
-    if (storedItemsFilterByDate) {
+    if (storedItemsFilterByDate.length) {
+        // console.log(storedItemsFilterByDate);
         var wrapper = "<table class='my-3 table table-bordered table-striped'> <thead> <tr> <th scope='col'>Date</th><th scope='col'>Item Name</th> <th scope='col'>Quantity</th> <th scope='col'>Amount</th> </tr> </thead> <tbody>";
         var totalAmount = 0;
         var totalQty = 0;
@@ -189,8 +190,9 @@ function showSalesReportByDate(selectedDate){
 
 }
 function showErrorMsgForincome () {
-    $('.income_wrapper > .js-error').toggle();
-    setTimeout(() => $('.income_wrapper > .js-error').hide(), 3000);
+    $('.sales_reports__content').empty();
+    $('.sales_wrapper > .js-error').toggle();
+    setTimeout(() => $('.sales_wrapper > .js-error').hide(), 3000);
 }
 // expense report 
 function showExpenseReportByDate(selectedDate) {
@@ -205,8 +207,10 @@ function showExpenseReportByDate(selectedDate) {
         return i.date == selectedDate;
     });
     
-    if (storedItemsFilterByDate) {
+    if (storedItemsFilterByDate.length) {
+        // console.log(storedItemsFilterByDate);
         // var filteredData = JSON.parse(storedItemsFilterByDate);
+        $('.expense_reports__content').empty();
         var wrapper = "<table class='my-3 table table-bordered table-striped'> <thead> <tr> <th scope='col'>Date</th> <th scope='col'>Expense Name</th>  <th scope='col'>Expense Amount</th> </tr> </thead> <tbody>";
         var totalExpense = 0;
         for (var i = 0; i < storedItemsFilterByDate.length; i++) {
@@ -221,6 +225,7 @@ function showExpenseReportByDate(selectedDate) {
     }
 }
 function showErrorMsgForExpense() {
+    $('.expense_reports__content').empty();
     $('.expense_wrapper > .js-error').toggle();
     setTimeout(() => $('.expense_wrapper > .js-error').hide(), 3000);
 }
